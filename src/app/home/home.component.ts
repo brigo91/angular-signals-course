@@ -22,6 +22,6 @@ export class HomeComponent {
     counter = signal(10)
 
     increment() {
-        this.counter.set(this.counter() + 1)
+        this.counter.update(counter => counter + 1)
     }
 }
