@@ -19,5 +19,9 @@ import {toObservable, toSignal, outputToObservable, outputFromObservable} from "
     styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+    counter = signal(10)
 
+    increment() {
+        this.counter.set(this.counter() + 1)
+    }
 }
