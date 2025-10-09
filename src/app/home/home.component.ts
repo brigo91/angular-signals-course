@@ -22,7 +22,7 @@ import { CoursesServiceWithFetch } from '../services/courses-fetch.service';
 export class HomeComponent {
     courses = signal<Course[]>([])
 
-    coursesService = inject(CoursesServiceWithFetch);
+    coursesService = inject(CoursesService);
 
     constructor(){
         this.loadCourses()
