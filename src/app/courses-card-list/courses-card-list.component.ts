@@ -12,6 +12,14 @@ import {MatDialog} from "@angular/material/dialog";
     styleUrl: './courses-card-list.component.scss'
 })
 export class CoursesCardListComponent {
-
+    
     courses = input.required<Course[]>();
+
+    onCourseDeleted(_t1: Course) {
+    throw new Error('Method not implemented.');
+    }
+
+    onEditCourse(_t1: Course) {
+    throw new Error('Method not implemented.');
+    }
 }
