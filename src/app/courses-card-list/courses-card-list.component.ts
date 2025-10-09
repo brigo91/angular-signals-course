@@ -18,11 +18,10 @@ export class CoursesCardListComponent {
 
     courseUpdated = output<Course>();
 
+    courseDeleted = output<string>();
+
     dialog = inject(MatDialog);
 
-    onCourseDeleted(_t1: Course) {
-    throw new Error('Method not implemented.');
-    }
 
     async onEditCourse(course: Course) {
         const newCourse = await openEditCourseDialog(
@@ -35,4 +34,9 @@ export class CoursesCardListComponent {
         );
         this.courseUpdated.emit(newCourse);
     }
+
+    onCourseDeleted(course: Course) {
+        this.courseDeleted.emit(course.id)
+    }
+
 }
