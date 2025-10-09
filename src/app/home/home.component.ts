@@ -8,6 +8,7 @@ import {MessagesService} from "../messages/messages.service";
 import {catchError, from, throwError} from "rxjs";
 import {toObservable, toSignal, outputToObservable, outputFromObservable} from "@angular/core/rxjs-interop";
 import { CoursesServiceWithFetch } from '../services/courses-fetch.service';
+import { openEditCourseDialog } from '../edit-course-dialog/edit-course-dialog.component';
 
 @Component({
     selector: 'home',
@@ -23,6 +24,8 @@ export class HomeComponent {
     #courses = signal<Course[]>([])
 
     coursesService = inject(CoursesService);
+
+    dialog = inject(MatDialog);
 
     beginnerCourses = computed(() => {
         const courses = this.#courses();
@@ -71,4 +74,23 @@ export class HomeComponent {
             alert(`Error deleting course`);
         }
     }
+
+    async onAddCourse() {
+        const newCourse = await openEditCourseDialog(
+        this.dialog,
+        {
+            mode: "create",
+            title: "Create New Course"
+        }
+        )
+        if (!newCourse) {
+        return;
+        }
+        const newCourses = [
+        ...this.#courses(),
+        newCourse
+        ];
+        this.#courses.set(newCourses);
+    }
+
 }
