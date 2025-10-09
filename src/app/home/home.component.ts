@@ -38,8 +38,6 @@ export class HomeComponent {
         return courses.filter(course => course.category === "ADVANCED");
     })
 
-    loadingService = inject(LoadingService);
-
     constructor(){
         this.loadCourses()
         .then(() => console.log(`All courses loaded`, this.#courses()));
@@ -47,16 +45,12 @@ export class HomeComponent {
 
     async loadCourses() {
         try {
-            this.loadingService.loadingOn();
             const courses = await this.coursesService.loadAllCourses()
             this.#courses.set(courses.sort(sortCoursesBySeqNo))
         }
         catch(err) {
             alert(`Error loading courses!`);
             console.error(err);
-        }
-        finally {
-            this.loadingService.loadingOff();
         }
     }
 
