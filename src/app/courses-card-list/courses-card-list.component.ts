@@ -16,6 +16,8 @@ export class CoursesCardListComponent {
     
     courses = input.required<Course[]>();
 
+    courseUpdated = output<Course>();
+
     dialog = inject(MatDialog);
 
     onCourseDeleted(_t1: Course) {
@@ -31,5 +33,6 @@ export class CoursesCardListComponent {
                 course
             }
         );
+        this.courseUpdated.emit(newCourse);
     }
 }
