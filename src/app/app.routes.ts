@@ -6,6 +6,7 @@ import {ResourceDemoComponent} from "./resource-demo/resource-demo.component";
 import {LinkedSignalDemoComponent} from "./linked-signal/linked-signal-demo.component";
 import { isUserAuthenticated } from './guards/auth.guard';
 import { CourseComponent } from './course/course.component';
+import { courseResolver } from './course/course.resolver';
 
 export const routes: Routes = [
   {
@@ -15,7 +16,10 @@ export const routes: Routes = [
   },
   {
     path: "courses/:courseId",
-    component: CourseComponent
+    component: CourseComponent,
+    resolve: {
+      course: courseResolver
+    }
   },
   {
     path: "login",
