@@ -37,8 +37,8 @@ export class LoginComponent {
         )
         return;
       }
-    //   await this.authService.login(email, password);
-    //   await this.router.navigate(['/home']);
+      await this.authService.login(email, password);
+      await this.router.navigate(['/home']);
     }
     catch(err) {
       console.error(err);
