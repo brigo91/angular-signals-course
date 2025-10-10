@@ -25,6 +25,6 @@ export class AppComponent {
     isLoggedIn = this.authService.isLoggedIn; 
     
     onLogout() {
-        this.authService
+        this.authService.logout();
     }
 }
