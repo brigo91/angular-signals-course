@@ -12,15 +12,12 @@ import {LessonDetailComponent} from "./lesson-detail/lesson-detail.component";
     styleUrl: './lessons.component.scss'
 })
 export class LessonsComponent {
-    
     mode = signal<'master' | 'detail'>("master");
-    
     lessons = signal<Lesson[]>([]);
-    
     selectedLesson = signal<Lesson | null>(null);
-    
     lessonService = inject(LessonsService);
-    
+    searchInput = viewChild.required<ElementRef>('search');
+
     onLessonUpdated($event: Event) {
     throw new Error('Method not implemented.');
     }
@@ -30,8 +27,10 @@ export class LessonsComponent {
     onLessonSelected(_t10: Lesson) {
     throw new Error('Method not implemented.');
     }
+    
     onSearch() {
-    throw new Error('Method not implemented.');
+        const query = this.searchInput()?.nativeElement.value;
+        console.log(query);
     }
 
 }
